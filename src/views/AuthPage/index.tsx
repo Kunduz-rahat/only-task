@@ -1,4 +1,5 @@
 import React from 'react'
+import AuthForm from '../../components/AuthForm';
 import Layout from '../../components/Layout';
 interface AuthPageProps {
 	
@@ -7,7 +8,7 @@ interface AuthPageProps {
 const AuthPage: React.FC<AuthPageProps> = (props) => {
 	return (  
 		<Layout>
-			<p>AuthPage</p>
+			<AuthForm/>
 		</Layout>
 	);
 }

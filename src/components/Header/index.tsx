@@ -1,13 +1,14 @@
 import React from 'react'
+import {Title} from './styles'
 interface HeaderProps {
 	
 }
  
 const Header:React.FC<HeaderProps> = () => {
 	return (  
-		<div>
-			Header
-		</div>
+		<Title>
+			ONLY.
+		</Title>
 	);
 }
  

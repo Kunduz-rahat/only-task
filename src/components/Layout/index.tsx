@@ -1,15 +1,16 @@
 import React from 'react'
 import Header from '../Header';
+import {Container} from './styles'
 interface LayoutProps {
 	children:React.ReactNode
 }
  
 const Layout: React.FC<LayoutProps> = ({children}) => {
 	return (  
-		<div>
+		<Container>
 			<Header/>
 			<main>{children}</main>
-		</div>
+		</Container>
 	);
 }
  
