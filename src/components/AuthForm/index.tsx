@@ -23,7 +23,7 @@ const AuthForm: React.FC = (props) => {
     formState: { errors },
   } = useForm<AuthFormTypes>({mode:"onBlur"});
   const onSubmit = handleSubmit((data) => {
-    alert(JSON.stringify(data));
+    console.log(JSON.stringify(data));
     reset()
   });
 
