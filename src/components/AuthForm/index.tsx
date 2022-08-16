@@ -1,6 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Button, FormGroup, Input, InputCheckbox, InputCheckboxText, LabelText } from "./styles";
+import {
+  Button,
+  FormGroup,
+  Input,
+  InputCheckbox,
+  InputCheckboxText,
+  InputError,
+  LabelText,
+} from "./styles";
 
 type AuthFormTypes = {
   login: string;
@@ -8,10 +16,17 @@ type AuthFormTypes = {
 };
 
 const AuthForm: React.FC = (props) => {
-  const { control, handleSubmit } = useForm<AuthFormTypes>();
+  const {
+    handleSubmit,
+    reset,
+    register,
+    formState: { errors },
+  } = useForm<AuthFormTypes>({mode:"onBlur"});
   const onSubmit = handleSubmit((data) => {
     alert(JSON.stringify(data));
+    reset()
   });
+
   return (
     <FormGroup>
       <form onSubmit={onSubmit}>
@@ -21,23 +36,39 @@ const AuthForm: React.FC = (props) => {
           </LabelText>
 
           <div>
-            <Input id="login" name="login" type="text" />
             
+            <Input
+              {...register("login", { required: "Обязательное поле" })}
+              id="login"
+              name="login"
+              type="email"
+            />
+          </div>
+          <div>
+            {errors?.login && <InputError>{errors?.login?.message || "Error!"}</InputError>}
           </div>
         </div>
         <div>
           <LabelText>
             <label htmlFor="password">Пароль</label>
           </LabelText>
+         
           <div>
-            <Input id="password" name="password" type="password" />
-                   </div>
+            <Input
+              {...register("password", { required: "Обязательное поле" })}
+              id="password"
+              name="password"
+              type="password"
+            />
+          </div>
+          <div>
+            {errors?.password && <InputError>{errors?.password?.message || "Error!"}</InputError>}
+          </div>
         </div>
-		  <div>
-		  <InputCheckbox type='checkbox'/>
-		  <InputCheckboxText>Запомнить пароль</InputCheckboxText>
-		  </div>
-		  
+        <div>
+          <InputCheckbox type="checkbox" />
+          <InputCheckboxText>Запомнить пароль</InputCheckboxText>
+        </div>
         <Button type="submit">Войти</Button>
       </form>
     </FormGroup>

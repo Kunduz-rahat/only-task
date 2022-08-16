@@ -4,6 +4,7 @@ export const FormGroup=styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
+margin-top:184px
 
 `
 
@@ -49,5 +50,21 @@ font-weight: 400;
 font-size: 16px;
 line-height: 19px;
 color: #1F1F1F;
-
+margin-left:14px
 `
+export const InputError=styled.p`
+color:#E26F6F
+`
+export const InputErrorBorder=styled.input`
+width: 640px;
+height: 60px;
+background: #F5F5F5;
+border-radius: 8px;
+outline:none;
+border:#E26F6F;
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+color: #232323;
+` 
